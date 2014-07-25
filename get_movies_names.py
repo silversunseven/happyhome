@@ -8,7 +8,8 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 logging.debug('DEBUG IS TURNED ON')
 
-library='/home/aiden/python/final_project/Library'
+#library='/home/aiden/python/final_project/Library'
+library='/home/aiden/python/udacity_project/happyhome/Library'
 #library='/home/aiden/python/final_project/TestLib'
 
 def check_results(init, ti):
