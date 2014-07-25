@@ -12,8 +12,8 @@ touch ./Appleseed\ Alpha\ 2014\ 1080p\ BRRip\ x264\ DTS-JYK/Appleseed\ Alpha\ 20
 touch ./Appleseed\ Alpha\ 2014\ 1080p\ BRRip\ x264\ DTS-JYK/Appleseed\ Alpha\ 2014\ 1080p\ BRRip\ x264\ DTS-JYK.mkv.jpg
 mkdir -p ./Captain.America.The.First.Avenger.2011.1080p.BRRip.x264.AAC-m2g
 touch ./Captain.America.The.First.Avenger.2011.1080p.BRRip.x264.AAC-m2g/Captain.America.The.First.Avenger.2011.1080p.BRRip.x264.AAC-m2g.\(Sample\).mkv
-touch ./Captain.America.The.Winter.Soldier.2014.720p.HDTV.XviD.AC3-VAiN/Captain.America.The.Winter.Soldier.2014.720p.HDTV.XviD.AC3-VAiN.avi
 mkdir -p ./Captain.America.The.Winter.Soldier.2014.720p.HDTV.XviD.AC3-VAiN
+touch ./Captain.America.The.Winter.Soldier.2014.720p.HDTV.XviD.AC3-VAiN/Captain.America.The.Winter.Soldier.2014.720p.HDTV.XviD.AC3-VAiN.avi
 touch ./Captain.America.The.Winter.Soldier.2014.720p.HDTV.XviD.AC3-VAiN/sample.avi
 mkdir -p ./Flipped\ \(2010\)\ [1080p]
 touch ./Flipped\ \(2010\)\ [1080p]/Flipped.2010.1080p.BluRay.x264.YIFY.mp4
