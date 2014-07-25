@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os, fnmatch, re
 import sqlobject
 from imdb import IMDb
@@ -8,9 +10,8 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 logging.debug('DEBUG IS TURNED ON')
 
-#library='/home/aiden/python/final_project/Library'
 library='/home/aiden/python/udacity_project/happyhome/Library'
-#library='/home/aiden/python/final_project/TestLib'
+#library='/home/aiden/python/udacity_project/happyhome/Testlib'
 
 def check_results(init, ti):
     ti = resList[init]
@@ -144,31 +145,50 @@ def query_movie_name(mov, file_year):
     init = 0
     for result in resList:
         ti = resList[init]
-        logging.debug('============================')
-        logging.debug(('Film Name ===> ',ti['title']))
-        logging.debug(('Type Needs===> ','movie'))
-        logging.debug(('Type Recvd===> ',ti['kind']))
-        logging.debug(('Year Needs===> ',str(file_year)))
-        logging.debug(('Year Recvd===> ',ti['year']))
-        logging.debug('============================')
-        if file_year == '':
-            if ti['kind'] == 'movie':
-                logging.debug('MATCH FOUND!')    
-                logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
-                set_movie_params(ti)
-                break
+        i.update(ti)
+        try:  #get GENRES
+            genreList = ti['genres']
+        except KeyError:
+            logging.debug(('No Genre Found for Film!', ti.movieID))
+            genreList = ['None']
+        if 'Short' not in genreList:
+            if file_year == '':
+                if ti['kind'] == 'movie':
+                    logging.debug('============================')
+                    logging.debug(('Film Name ===> ',ti['title']))
+                    logging.debug(('Type Needs===> ','movie'))
+                    logging.debug(('Type Recvd===> ',ti['kind']))
+                    logging.debug('============================')
+                    logging.debug('MATCH FOUND!')    
+                    logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
+                    set_movie_params(ti)
+                    break
+                else:
+                    logging.debug('===>First movie not matched, iterating!')
+                    init = init + 1
             else:
-                logging.debug('===>First movie not matched, iterating!')
-                init = init + 1
-        else:        
-            if ti['kind'] == 'movie' and str(ti['year']) == str(file_year):
-                logging.debug('MATCH FOUND!')    
-                logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
-                set_movie_params(ti)
-                break
-            else:
-                logging.debug('===>First movie not matched, iterating!')
-                init = init + 1
+                if int(file_year) < 2000:
+                    print('This version does not support films older than year 2000!')
+                    break
+                if ti['kind'] == 'movie' and str(ti['year']) == str(file_year):
+                    logging.debug('============================')
+                    logging.debug(('Film Name ===> ',ti['title']))
+                    logging.debug(('Type Needs===> ','movie'))
+                    logging.debug(('Type Recvd===> ',ti['kind']))
+                    logging.debug(('Year Needs===> ',str(file_year)))
+                    logging.debug(('Year Recvd===> ',ti['year']))
+                    logging.debug('============================')
+                    logging.debug('MATCH FOUND!')    
+                    logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
+                    set_movie_params(ti)
+                    break
+                else:
+                    logging.debug('===>First movie not matched, iterating!')
+                    init = init + 1
+        else:
+            logging.debug(('Skipping as this is a short Film!. Trying next Film', ti.movieID))
+            init = init + 1
+            
 
 
 def locate(pattern, root=os.curdir):
@@ -210,7 +230,7 @@ def get_MKV_files():
         else:
             movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).mkv$',x)
             if movie:
-                logging.debug("===>Matched first")
+                logging.debug("===>Matched Second")
                 logging.debug(('===>group 0 ---> ', movie.group(0)))
                 logging.debug(('===>group 1 ---> ', movie.group(1)))
                 logging.debug(('===>group 2 ---> ', movie.group(2)))
@@ -228,8 +248,47 @@ def get_MKV_files():
 
    
 def get_AVI_files():
-        print('To be completed')
+    avi_dict = {}
+    avi_list = locate("*.avi", library)
+    #logging.debug(('===> ####################################List Of Files : ', avi_list.items()))
+
+    for x in avi_list:
+        print('===>Working with  ---> ', x)
+        movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).*(2\d\d\d).*(1080p)?|(720p)?(\w*)avi$',x)
+        if movie:
+            logging.debug("===>Matched first")
+            logging.debug(('===>group 0 ---> ', movie.group(0)))
+            logging.debug(('===>group 1 ---> ', movie.group(1)))
+            logging.debug(('===>group 2 ---> ', movie.group(2)))
+            logging.debug(('===>group 3 ---> ', movie.group(3)))
+            clean_txt1year = movie.group(3)
+            clean_txt2year = re.sub('[ ]','', clean_txt1year)
+            clean_txt1mov = re.sub('[.]',' ', movie.group(2))
+            clean_txt2mov = re.sub('[_]',' ', clean_txt1mov)
+            clean_txt3mov = re.sub('\d\d\d\d','', clean_txt2mov)
+            logging.debug(('===>clean_txt3mov ---> ', clean_txt3mov))
+            logging.debug(('===>clean_txt2year ---> ', clean_txt2year))
+            query_movie_name(clean_txt3mov, clean_txt2year)
+            print("__________________________________________________________________")
+        else:
+            movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).avi$',x)
+            if movie:
+                logging.debug("===>Matched Second")
+                logging.debug(('===>group 0 ---> ', movie.group(0)))
+                logging.debug(('===>group 1 ---> ', movie.group(1)))
+                logging.debug(('===>group 2 ---> ', movie.group(2)))
+                clean_txt2year = ''
+                clean_txt1mov = re.sub('[.]',' ', movie.group(2))
+                clean_txt2mov = re.sub('[_]',' ', clean_txt1mov)
+                clean_txt3mov = re.sub('\d\d\d\d','', clean_txt2mov)
+                logging.debug(('===>clean_txt3mov ---> ', clean_txt3mov))
+                query_movie_name(clean_txt3mov, clean_txt2year)
+                avi_dict[clean_txt3mov] = movie.group(0); # Add new entry
+                print("__________________________________________________________________")
+            else:
+                print "no match"
+                print("__________________________________________________________________")
 
 
-get_MKV_files()
-#get_AVI_files()
+#get_MKV_files()
+get_AVI_files()
