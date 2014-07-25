@@ -33,8 +33,6 @@ touch ./Ill\ Follow\ You\ Down\ \(2013\)/WWW.YTS.RE.jpg
 mkdir -p ./IPT/Ephraims.Rescue.2013.BDRip.XviD.Lum1x
 touch ./IPT/Ephraims.Rescue.2013.BDRip.XviD.Lum1x/Ephraims.Rescue.2013.BDRip.XviD.Lum1x.txt
 touch ./IPT/Ephraims.Rescue.2013.BDRip.XviD.Lum1x/Ephraims.Rescue.2013.BDRip.XviD.Lum1x.zip
-mkdir -p ./IPT/Fast.And.Furious.6.2013.EXTENDED.1080p.BluRay.DTS.x264-PHD
-touch ./IPT/Fast.And.Furious.6.2013.EXTENDED.1080p.BluRay.DTS.x264-PHD/Fast.And.Furious.6.2013.EXTENDED.1080p.BluRay.DTS.x264-PHD.mkv
 mkdir -p ./IPT/Gravity.2013.720p.DVDSCR.XViD.AC3-LEGi0N
 touch ./IPT/Gravity.2013.720p.DVDSCR.XViD.AC3-LEGi0N/Gravity.2013.720p.DVDSCR.XViD.AC3-LEGi0N.avi
 touch ./IPT/Gravity.2013.720p.DVDSCR.XViD.AC3-LEGi0N/Gravity.2013.720p.DVDSCR.XViD.AC3-LEGi0N.nfo
@@ -71,10 +69,6 @@ touch ./Noah.2013.720p.BluRay.x264-SPARKS[rarbg]/noah.2013.720p.bluray.x264-spar
 touch ./Noah.2013.720p.BluRay.x264-SPARKS[rarbg]/RARBG.com.txt
 touch ./Noah.2013.720p.BluRay.x264-SPARKS[rarbg]/Subs/Noah.2013.720p.BluRay.x264-SPARKS.idx
 touch ./Noah.2013.720p.BluRay.x264-SPARKS[rarbg]/Subs/Noah.2013.720p.BluRay.x264-SPARKS.sub
-mkdir -p ./Otto.The.Rhino.2013.WEBRIP.x264.AC3.CrEwSaDe
-touch ./Otto.The.Rhino.2013.WEBRIP.x264.AC3.CrEwSaDe/CrEwSaDe.nfo
-touch ./Otto.The.Rhino.2013.WEBRIP.x264.AC3.CrEwSaDe/Otto.The.Rhino.2013.WEBRIP.x264.AC3.CrEwSaDe.mkv
-touch ./Otto.The.Rhino.2013.WEBRIP.x264.AC3.CrEwSaDe/Otto.The.Rhino.2013.WEBRIP.x264.AC3.CrEwSaDe.Sample.mkv
 mkdir -p ./Philomena\ \(2013\)
 touch ./Philomena\ \(2013\)/Philomena.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Philomena\ \(2013\)/WWW.YIFY-TORRENTS.COM.jpg
