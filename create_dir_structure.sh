@@ -145,11 +145,11 @@ touch ./Beyond\ the\ Night\ 1983.avi
 touch ./Me\ You\ Us\ Forever.avi
 touch ./Oblivion.2013.1080p.BluRay.x264.YIFY.mp4
 touch ./In\ the\ blink\ of\ an\ eye[DVDrip].avi
-touch ./The\ Moment\ After\ 2\ -\ The\ Awakening\(2006\(.avi
+touch ./The\ Moment\ After\ 2\ -\ The\ Awakening\(2006\).avi
 touch ./Diary.of.a.Wimpy.Kid.Dog.Days.2012.720p.BrRip.x264.YIFY.mp4
 touch ./The\ Sobbing\ Stone\ 2005\ CG\ entheta.avi
 touch ./The\ Apostle.avi
-touch ./Pilgrims\ Progress\ -\ Journey\ To\ Heaven\ \(2008\(.avi
+touch ./Pilgrims\ Progress\ -\ \(2008\).avi
 touch ./The\ Perfect\ Stranger.avi
 touch ./MONEY\ OR\ MISSION.divx
 touch ./Die.Welle.2008.720p.BluRay.x264-CiNEFiLE.mkv
@@ -157,24 +157,20 @@ touch ./The\ Moment\ After.avi
 touch ./Final\ Exit.avi
 touch ./Logan.mp4
 touch ./Leviathan.2012.1080p.BluRay.x264.YIFY.mp4
-touch ./LEGO.Star.Wars.The.Yoda.Chronicles.2013.DVDRip.XviD.AC3-EVO.avi
 touch ./Playing.For.Keeps.2012.720p.BluRay.x264.YIFY.mp4
-touch ./Here.Comes.the.Boom.BDRip.XviD.CD2-COCAIN.avi
-touch ./list
 touch ./In\ Time\ of\ Need.divx
 touch ./The\ Second\ Chance[2006].avi
 touch ./Lion\ King\ 1\ 1994.mp4
 touch ./Mandela.Long.Walk.to.Freedom.2013.DVDSCR.XViD.AC3-LEGi0N.avi
-touch ./Flywheel\ \(2003\(.avi
+touch ./Flywheel\ \(2003\).avi
 touch ./ANOTHER\ PERFECT\ STRANGER.avi
 touch ./Quantum.of.Solace.2008.720p.AAC.x264.mkv
 touch ./The\ Inn\ Of\ The\ Sixth\ Happiness.avi
 touch ./I\ Now\ Pronounce\ You\ Chuck\ and\ Larry[2007]BRRip\ XviD-ETRG.avi
 touch ./The\ Encounter.avi
 touch ./Pamelas\ Prayer.avi
-touch ./A\ Walk\ to\ Remember\ \(2002\(\ DvDrip\ Xvid..avi
+touch ./A\ Walk\ to\ Remember\ \(2002\)\ DvDrip\ Xvid..avi
 touch ./The\ Field\ is\ White.mov
-touch ./The\ Imposter[2010][DVDRip].avi
 touch ./Dolphin.Tale.2011.720p.BrRip.x264.YIFY.mp4
 touch ./Escape.from.Planet.Earth.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Admission.2013.720p.BluRay.x264.YIFY.mp4
@@ -184,7 +180,7 @@ touch ./Book\ of\ Mormon\ Journey\ Vol\ 1.mov
 touch ./ETRG.mp4
 touch ./After\ Earth\ 2013\ 1080p\ WEB-DLRip\ x264\ AAC-JYK.mkv
 touch ./Father\ in\ Israel.2009.mkv
-touch ./The\ Back-Up\ Plan\ \(2010\(\ 720p.mkv
+touch ./The\ Back-Up\ Plan\ \(2010\)\ 720p.mkv
 touch ./Extras.avi
 touch ./American\ Mormon.divx
 touch ./T.L.W.BRR.ANALOG.avi
@@ -204,24 +200,22 @@ touch ./Black\ Nativity\ 2013\ DVDRip\ XviD-FAVIK.avi
 touch ./ExtraTorrentRG.mp4
 touch ./Epic.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Bourne\ the\ 2\ 2004\ Supremacy.mp4
-touch ./Luther-AC3-5,1-DVDRip[Eng]2003.avi
 touch ./Clancy.avi
 touch ./CHRISTIAN\ MOVIE--BEHIND\ THE\ SUN.avi
 touch ./Haunter.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Jerusalem.Countdown.avi
-touch ./The\ Grandmasters\ 2013\ 720p\ WEBRip\ x264\ AC3-JYK.mkv
 touch ./Courageous.2011.BluRay.720p.x264.DTS-HDChina.mkv
 touch ./Amazing\ Racer\ 2013\ BRRiP\ XViD-sC0rp.avi
 touch ./Diary.of.a.Wimpy.Kid.2.Rodrick.Rules.2011.BRRip.AC3.XViD-EP1C.avi
 touch ./Hotel.Transylvania.2012.720p.BluRay.x264.YIFY.mp4
-touch ./Most\ -\ The\ Bridge\ \(2003\(.avi
+touch ./Most\ -\ The\ Bridge\ \(2003\).avi
 touch ./Pitch.Perfect.2012.720p.BRrip.264.YIFY.mp4
 touch ./Journey\ to\ Faith.divx
 touch ./Belle\ And\ The\ Beast.avi
 touch ./Brigham\ City.mov
-touch ./Love\ Comes\ Softly\ \(Christian\ Movie\(.avi
+touch ./Love\ Comes\ Softly\ \(Christian\ Movie\).avi
 touch ./The\ Secret\ Life\ of\ Walter\ Mitty\ 2013\ DVDscr\ XViD\ NO1KNOWS.avi
-touch ./Max\ Lucado\ Story\ -\ Christmas\ Child\ \(2003\(.avi
+touch ./Max\ Lucado\ Story\ -\ Christmas\ Child\ \(2003\).avi
 touch ./Bourne\ the\ 3\ 2007\ Ultimatum.mp4
 touch ./Dark.Skies.2013.720p.Read.Info.X264.AC3.TommieCook.avi
 touch ./Journey\ 2\ The\ Mysterious\ Island\ 2012\ TS\ READNFO\ XViD\ -\ INSPiRAL.avi
@@ -237,9 +231,9 @@ touch ./Mama.2013.720p.BRrip.x264.GAZ.mp4
 touch ./Down\ and\ Derby.mov
 touch ./Lay.It.Down.avi
 touch ./Color\ Of\ The\ Cross\ 2.avi
-touch ./The\ Knot\ \(2012\(\ DVDRip\ XViD\ juggs.avi
+touch ./The\ Knot\ \(2012\)\ DVDRip\ XViD\ juggs.avi
 touch ./Gods.country.avi
-touch ./Tears\ of\ Steel\ \(2012\(\ BRRIP\ DD\ 2.0\ SRT\ XVID\ EXTERNE\ SUBS.avi
+touch ./Tears\ of\ Steel\ \(2012\)\ BRRIP\ DD\ 2.0\ SRT\ XVID\ EXTERNE\ SUBS.avi
 touch ./Breakout.2013.DVDRip.XviD-3LT0N.avi
 touch ./Luther-AC3-5,1-DVDRip[Eng]2003.txt
 touch ./Joseph.mov
@@ -248,7 +242,7 @@ touch ./Out\ of\ Step.divx
 touch ./Lemonade\ Mouth[2011]DVDRip\ XviD-ExtraTorrentRG.avi
 touch ./House.At.The.End.Of.The.Street.2012.720p.BluRay.x264.YIFY.mp4
 touch ./The\ Encounter\ 2.avi
-touch ./The\ Climb\ \(2002\(\ English\ subs.avi
+touch ./The\ Climb\ \(2002\)\ English\ subs.avi
 touch ./The\ Host\ 2013\ 720p\ HDRip\ x264\ AC3-JYK.mkv
 touch ./Color\ of\ the\ Cross.English_French.sub.DVDriP.avi
 touch ./Hours.2013.720p.BluRay.x264.YIFY.mp4
@@ -257,7 +251,7 @@ touch ./Bourne\ the\ 1\ 2002\ Identity.mp4
 touch ./God\ of\ Wonders.avi
 touch ./The\ Legend\ of\ Three\ Trees.avi
 touch ./One\ Day[2011]BRRip\ XviD-ExtraTorrentRG.avi
-touch ./The\ Counterfeiters\ \(aka\ Die\ Falscher\(\ KLAXXON.avi
+touch ./The\ Counterfeiters\ \(aka\ Die\ Falscher\)\ KLAXXON.avi
 touch ./Late\ One\ Night.avi
 touch ./End_of_the_harvest.mpg
 touch ./Age.of.Dinosaurs.2013.1080p.BluRay.x264.YIFY.mp4
