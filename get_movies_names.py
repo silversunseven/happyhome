@@ -7,7 +7,7 @@ from imdb import helpers
 import logging
 
 #set your log level
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.WARN)
 logging.debug('DEBUG IS TURNED ON')
 
 library='/home/aiden/python/udacity_project/happyhome/Library'
@@ -146,11 +146,17 @@ def query_movie_name(mov, file_year):
     for result in resList:
         ti = resList[init]
         i.update(ti)
-        try:  #get GENRES
+        try:  #get and set GENRES
             genreList = ti['genres']
         except KeyError:
             logging.debug(('No Genre Found for Film!', ti.movieID))
             genreList = ['None']
+        try:  #get and set YEAR
+            imdb_year = ti['year']
+        except KeyError:
+            logging.debug(('No Year Found for Film!', ti.movieID))
+            imdb_year = ['']
+            
         if 'Short' not in genreList:
             if file_year == '':
                 if ti['kind'] == 'movie':
@@ -164,26 +170,26 @@ def query_movie_name(mov, file_year):
                     set_movie_params(ti)
                     break
                 else:
-                    logging.debug('===>First movie not matched, iterating!')
+                    logging.debug(('===>Movie not matched, iterating!', ti.movieID), ti['kind'], ' does not == movie')
                     init = init + 1
             else:
                 if int(file_year) < 2000:
                     print('This version does not support films older than year 2000!')
                     break
-                if ti['kind'] == 'movie' and str(ti['year']) == str(file_year):
+                if ti['kind'] == 'movie' and str(imdb_year) == str(file_year):
                     logging.debug('============================')
                     logging.debug(('Film Name ===> ',ti['title']))
                     logging.debug(('Type Needs===> ','movie'))
                     logging.debug(('Type Recvd===> ',ti['kind']))
                     logging.debug(('Year Needs===> ',str(file_year)))
-                    logging.debug(('Year Recvd===> ',ti['year']))
+                    logging.debug(('Year Recvd===> ',imdb_year))
                     logging.debug('============================')
                     logging.debug('MATCH FOUND!')    
                     logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
                     set_movie_params(ti)
                     break
                 else:
-                    logging.debug('===>First movie not matched, iterating!')
+                    logging.debug(('===>Movie not matched, iterating!', ti.movieID, ti['kind'], ' does not == movie OR file', str(file_year), ' != ', str(imdb_year)))
                     init = init + 1
         else:
             logging.debug(('Skipping as this is a short Film!. Trying next Film', ti.movieID))
@@ -207,10 +213,6 @@ def get_MKV_files():
 
     for x in mkv_list:
         print('===>Working with  ---> ', x)
-        #movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).*(\d\d\d\d).*.mkv$',x)
-        #Matches only movies after year 2000
-        #(.*\/)([a-z,A-Z, ,.\-,\w]*).*(2\d\d\d).*(1080p)?|(720p)?(\w*)mkv$
-        #(.*\/)([a-z,A-Z, ,.\-,\w]*).*(2\d\d\d).*(1080p)?|(720p)?.*mkv$
         movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).*(2\d\d\d).*(1080p)?|(720p)?(\w*)mkv$',x)
         if movie:
             logging.debug("===>Matched first")
