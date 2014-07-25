@@ -135,16 +135,15 @@ touch ./X\ Men\ First\ Class\ \(2011\)/Other/Torrent\ downloaded\ from\ Demonoid
 touch ./X\ Men\ First\ Class\ \(2011\)/WWW.YIFY-TORRENTS.COM.jpg
 touch ./X\ Men\ First\ Class\ \(2011\)/X-Men.First.Class.2011.720p.BrRip.264.YIFY.mp4
 touch ./X\ Men\ First\ Class\ \(2011\)/X-Men.First.Class.2011.720pBrRip.264.YIFY.srt
-mkdir -p ./Zarafa\ \(2012:2014\)\ DVDrip\ \(xvid\)\ NL\ Gespr.\ DMT_
-touch ./Zarafa\ \(2012:2014\)\ DVDrip\ \(xvid\)\ NL\ Gespr.\ DMT_/DMT\ NFO,\ Read\ before\ Playing.txt
-touch ./Zarafa\ \(2012:2014\)\ DVDrip\ \(xvid\)\ NL\ Gespr.\ DMT_/dmt4.png
-touch ./Zarafa\ \(2012:2014\)\ DVDrip\ \(xvid\)\ NL\ Gespr.\ DMT_/jojo.png
-touch ./Zarafa\ \(2012:2014\)\ DVDrip\ \(xvid\)\ NL\ Gespr.\ DMT_/zarafa.avi
+mkdir -p ./Zarafa\ \(2012\)\ DVDrip\ \(xvid\)\ NL\ Gespr.\ DMT_
+touch ./Zarafa\ \(2012\)\ DVDrip\ \(xvid\)\ NL\ Gespr.\ DMT_/DMT\ NFO,\ Read\ before\ Playing.txt
+touch ./Zarafa\ \(2012\)\ DVDrip\ \(xvid\)\ NL\ Gespr.\ DMT_/dmt4.png
+touch ./Zarafa\ \(2012\)\ DVDrip\ \(xvid\)\ NL\ Gespr.\ DMT_/jojo.png
+touch ./Zarafa\ \(2012\)\ DVDrip\ \(xvid\)\ NL\ Gespr.\ DMT_/zarafa.avi
 touch ./The\ River\ Within.avi
 touch ./Beyond\ the\ Night\ 1983.avi
 touch ./Me\ You\ Us\ Forever.avi
 touch ./Oblivion.2013.1080p.BluRay.x264.YIFY.mp4
-touch ./In\ the\ blink\ of\ an\ eye[DVDrip].avi
 touch ./The\ Moment\ After\ 2\ -\ The\ Awakening\(2006\).avi
 touch ./Diary.of.a.Wimpy.Kid.Dog.Days.2012.720p.BrRip.x264.YIFY.mp4
 touch ./The\ Sobbing\ Stone\ 2005\ CG\ entheta.avi
@@ -167,60 +166,48 @@ touch ./ANOTHER\ PERFECT\ STRANGER.avi
 touch ./Quantum.of.Solace.2008.720p.AAC.x264.mkv
 touch ./The\ Inn\ Of\ The\ Sixth\ Happiness.avi
 touch ./I\ Now\ Pronounce\ You\ Chuck\ and\ Larry[2007]BRRip\ XviD-ETRG.avi
-touch ./The\ Encounter.avi
 touch ./Pamelas\ Prayer.avi
 touch ./A\ Walk\ to\ Remember\ \(2002\)\ DvDrip\ Xvid..avi
 touch ./The\ Field\ is\ White.mov
 touch ./Dolphin.Tale.2011.720p.BrRip.x264.YIFY.mp4
 touch ./Escape.from.Planet.Earth.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Admission.2013.720p.BluRay.x264.YIFY.mp4
-touch ./The\ Appointment.avi
 touch ./Aliens.of.the.Deep.2005.720p.WEB-DL.HDCLUB.mkv
 touch ./Book\ of\ Mormon\ Journey\ Vol\ 1.mov
 touch ./ETRG.mp4
 touch ./After\ Earth\ 2013\ 1080p\ WEB-DLRip\ x264\ AAC-JYK.mkv
 touch ./Father\ in\ Israel.2009.mkv
 touch ./The\ Back-Up\ Plan\ \(2010\)\ 720p.mkv
-touch ./Extras.avi
 touch ./American\ Mormon.divx
-touch ./T.L.W.BRR.ANALOG.avi
 touch ./Mandie.and.the.Secret.Tunnel.2009.DVDRip.XviD-ViSiON.avi
 touch ./The\ Grace\ Card.avi
 touch ./Iron.Man.3.2013.1080p.BluRay.x264.YIFY.mp4
 touch ./Extraordinary\ Measures\ 2010\ 720p\ BRRip\ H264\ AAC-GiPSY.mp4
 touch ./Letters.To.God[2010]DvDrip-aXXo.avi
 touch ./Hancock\ County.mov
-touch ./The\ Climb\ -\ the\ making\ of.avi
 touch ./A.Case.of.You.2013.HDRip.XviD.AC3-EVO.avi
 touch ./AMERICAN\ MORMON\ in\ EUROPE.divx
 touch ./Lehis\ Land\ of\ First\ Inheritance-Exploring\ the\ Lands\ of\ the\ Book\ of\ Mormon\ .divx
 touch ./Man.of.Tai.Chi.2013.720p.Webrip.x264.AC3-FooKaS.mkv
-touch ./Here.Comes.the.Boom.BDRip.XviD.CD1-COCAIN.avi
 touch ./Black\ Nativity\ 2013\ DVDRip\ XviD-FAVIK.avi
 touch ./ExtraTorrentRG.mp4
 touch ./Epic.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Bourne\ the\ 2\ 2004\ Supremacy.mp4
 touch ./Clancy.avi
-touch ./CHRISTIAN\ MOVIE--BEHIND\ THE\ SUN.avi
+touch ./Behind.the.sun.avi
 touch ./Haunter.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Jerusalem.Countdown.avi
 touch ./Courageous.2011.BluRay.720p.x264.DTS-HDChina.mkv
-touch ./Amazing\ Racer\ 2013\ BRRiP\ XViD-sC0rp.avi
 touch ./Diary.of.a.Wimpy.Kid.2.Rodrick.Rules.2011.BRRip.AC3.XViD-EP1C.avi
 touch ./Hotel.Transylvania.2012.720p.BluRay.x264.YIFY.mp4
-touch ./Most\ -\ The\ Bridge\ \(2003\).avi
 touch ./Pitch.Perfect.2012.720p.BRrip.264.YIFY.mp4
 touch ./Journey\ to\ Faith.divx
-touch ./Belle\ And\ The\ Beast.avi
 touch ./Brigham\ City.mov
-touch ./Love\ Comes\ Softly\ \(Christian\ Movie\).avi
 touch ./The\ Secret\ Life\ of\ Walter\ Mitty\ 2013\ DVDscr\ XViD\ NO1KNOWS.avi
-touch ./Max\ Lucado\ Story\ -\ Christmas\ Child\ \(2003\).avi
 touch ./Bourne\ the\ 3\ 2007\ Ultimatum.mp4
 touch ./Dark.Skies.2013.720p.Read.Info.X264.AC3.TommieCook.avi
 touch ./Journey\ 2\ The\ Mysterious\ Island\ 2012\ TS\ READNFO\ XViD\ -\ INSPiRAL.avi
-touch ./Christmas\ In\ Canaan.avi
-touch ./Amazing\ Love.avi
+touch ./Christmas\ In\ Canaan.2009.avi
 touch ./Dialtone\ [2009][DVDRip].avi
 touch ./Mud.2012.720p.BluRay.x264.YIFY.mp4
 touch ./The\ Book\ Thief\ [2013]\ DVDScr\ XviD-SaM[ETRG].avi
