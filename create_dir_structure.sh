@@ -193,7 +193,6 @@ touch ./Black\ Nativity\ 2013\ DVDRip\ XviD-FAVIK.avi
 touch ./ExtraTorrentRG.mp4
 touch ./Epic.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Bourne\ the\ 2\ 2004\ Supremacy.mp4
-touch ./Clancy.avi
 touch ./Behind.the.sun.avi
 touch ./Haunter.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Jerusalem.Countdown.avi
@@ -207,7 +206,6 @@ touch ./The\ Secret\ Life\ of\ Walter\ Mitty\ 2013\ DVDscr\ XViD\ NO1KNOWS.avi
 touch ./Bourne\ the\ 3\ 2007\ Ultimatum.mp4
 touch ./Dark.Skies.2013.720p.Read.Info.X264.AC3.TommieCook.avi
 touch ./Journey\ 2\ The\ Mysterious\ Island\ 2012\ TS\ READNFO\ XViD\ -\ INSPiRAL.avi
-touch ./Christmas\ In\ Canaan.2009.avi
 touch ./Dialtone\ [2009][DVDRip].avi
 touch ./Mud.2012.720p.BluRay.x264.YIFY.mp4
 touch ./The\ Book\ Thief\ [2013]\ DVDScr\ XviD-SaM[ETRG].avi
