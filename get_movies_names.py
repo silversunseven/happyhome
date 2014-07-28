@@ -251,7 +251,7 @@ def get_MKV_files():
    
 def get_AVI_files():
     avi_dict = {}
-    avi_list = locate("*.avi", library)
+    avi_list = locate("*.avi", library)# must rewrite this part so it generates a list. list can then be modifiable.
     #logging.debug(('===> ####################################List Of Files : ', avi_list.items()))
 
     for x in avi_list:
@@ -291,6 +291,6 @@ def get_AVI_files():
                 print "no match"
                 print("__________________________________________________________________")
 
-
-#get_MKV_files()
-get_AVI_files()
+def main():
+   # get_MKV_files()
+    get_AVI_files()
