@@ -1,12 +1,19 @@
 #!/usr/bin/python
 
-import os, fnmatch, re, glob
+import os, fnmatch, re, glob, shutil
 import sqlobject
 from imdb import IMDb
 from imdb import helpers
 import logging
 
-#set your log level
+#setting for writing to logs
+logger = logging.getLogger('happyhome')
+hdlr = logging.FileHandler('/home/aiden/python/udacity_project/happyhome/happyhome.log')
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr) 
+logger.setLevel(logging.INFO)
+#set your log level for the console
 logging.basicConfig(level=logging.WARN)
 logging.debug('DEBUG IS TURNED ON')
 
@@ -14,13 +21,21 @@ library='/home/aiden/python/udacity_project/happyhome/Library'
 #library='/home/aiden/python/udacity_project/happyhome/Testlib'
 
 def chk_for_R(mpaa, title, file_loc):
-    if "R " in mpaa and "language" in mpaa:
-        print(title, " is an R-Rated Film, with bad language!", mpaa)
-        print("deleting ", title, " from ", file_loc)
+    logger.info('Checking to see if the film (' + title + ') complies with moral code...')
+    if "Rated R" in mpaa and "language" in mpaa:
+        logger.warn('Failed moral code check!. ' + title + " is an R-Rated Film, with bad language!" + str(mpaa))
+        logger.warn("Deleting " + title + " from " + file_loc)
+        os.remove(file_loc)
+    else:
+        logger.info('Passed moral code(R-rated+bad Language) check.')
     if "Rated PG-13" in mpaa and "language" in mpaa:
-        print(title, " is PG-13 Rated but contains bad language! ", mpaa)
-        print("deleting ", title, " from ", file_loc)
-
+        logger.warn('Failed moral code check!. ' + title + " is PG-13 Rated BUT contains bad language! " + mpaa)
+        logger.warn("Deleting " + title + " from " + file_loc)
+        os.remove(file_loc)
+    else:
+        logger.info('Passed moral code(Naughty PG-13+bad Language) check.')
+    logger.info('MPAA : ' + mpaa)
+    
 def set_movie_params(ti):
     i.update(ti)
     try:  #get TITLE
@@ -143,6 +158,7 @@ def set_movie_params(ti):
         
 def query_movie_name(mov, file_year, file_loc):
     global i
+    logging.info('test')
     i = IMDb('sql', uri='mysql://root:f4tb33@localhost/imdb')
     resList = i.search_movie(mov)
     logging.debug(('===>resList ---> ', resList))
@@ -154,17 +170,16 @@ def query_movie_name(mov, file_year, file_loc):
         try:  #get and set MPAA
             mpaa = ti['mpaa']
         except KeyError:
-            logging.debug(('No MPAA Found for Film!', ti.movieID))
             mpaa='None'
         try:  #get and set GENRES
             genreList = ti['genres']
         except KeyError:
-            logging.debug(('No Genre Found for Film!', ti.movieID))
+            logger.info(('No Genre Found for Film - ' + str(ti.movieID)))
             genreList = ['None']
         try:  #get and set YEAR
             imdb_year = ti['year']
         except KeyError:
-            logging.debug(('No Year Found for Film!', ti.movieID))
+            logger.info(('No Year Found for Film - ' + str(ti.movieID)))
             imdb_year = ['']
             
         if 'Short' not in genreList:
@@ -177,15 +192,20 @@ def query_movie_name(mov, file_year, file_loc):
                     logging.debug('============================')
                     logging.debug('MATCH FOUND!')    
                     logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
+                    logger.info('Setting parameters for Film - ' + str(ti['title']))
                     set_movie_params(ti)
-                    chk_for_R(mpaa,ti['title'], file_loc )
-                    break
+                    if mpaa == 'None':
+                        logger.info("Can't Check against moral code beccause there is no MPAA rating for this film")
+                        break
+                    else:
+                        chk_for_R(mpaa,ti['title'], file_loc )
+                        break
                 else:
-                    logging.debug(('===>Movie not matched, iterating!', ti.movieID), ti['kind'], ' does not == movie')
+                    logger.info('Film ' + str(ti.movieID) + ' not matched! Reason : '  + " (" + ti['kind'] + ") " + ' != (movie)')
                     init = init + 1
             else:
                 if int(file_year) < 2000:
-                    print('This version does not support films older than year 2000!')
+                    logger.info('This version does not support films older than year 2000!')
                     break
                 if ti['kind'] == 'movie' and str(imdb_year) == str(file_year):
                     logging.debug('============================')
@@ -201,32 +221,23 @@ def query_movie_name(mov, file_year, file_loc):
                     chk_for_R(mpaa,ti['title'], file_loc )
                     break
                 else:
-                    logging.debug(('===>Movie not matched, iterating!', ti.movieID, ti['kind'], ' does not == movie OR file', str(file_year), ' != ', str(imdb_year)))
+                    logger.info('Film ' + str(ti.movieID) + ' not matched! Reason : '  + ' (' + ti['kind'] + ')' + ' != (movie) || file ' + str(file_year) + ' != ' + str(imdb_year))
                     init = init + 1
         else:
-            logging.debug(('Skipping as this is a short Film!. Trying next Film', ti.movieID))
+            logger.info('Skipping as this is a short Film! ' + str(ti.movieID) + ". Trying next Film..." )
             init = init + 1
             
-
-
-def locate(pattern, root=os.curdir):
-    for path, dirs, files in os.walk(os.path.abspath(root)):
-        for filename in fnmatch.filter(files, pattern):
-            yield os.path.join(path, filename)
- 
     
- #TODO: MKV IS OUT OF DATE: make same as AVI
-def get_MKV_files():
-    mkv_dict = {} # create a dictionary to remove R-Rated files
-    mkv_list = [] # create an iterable list
+def get_files(ftype):
+    list_of_files = [] # create an iterable list
     for root , dirs, files in os.walk(library):
         for file in files:
-            if file.endswith(".mkv"):
-                mkv_list.append(os.path.join(root, file))
+            if file.endswith("." + ftype):
+                list_of_files.append(os.path.join(root, file))
     
-    for x in mkv_list:
-        print('===>Working with  ---> ', x)
-        movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).*(2\d\d\d).*(1080p)?|(720p)?(\w*)mkv$',x)
+    for x in list_of_files:
+        logger.info('Working with file :' + x)
+        movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).*(2\d\d\d).*(1080p)?|(720p)?(\w*)' + ftype + "$",x)
         if movie:
             logging.debug("===>Matched first")
             logging.debug(('===>group 0 ---> ', movie.group(0)))
@@ -240,10 +251,11 @@ def get_MKV_files():
             clean_txt3mov = re.sub('\d\d\d\d','', clean_txt2mov)
             logging.debug(('===>clean_txt3mov ---> ', clean_txt3mov))
             logging.debug(('===>clean_txt2year ---> ', clean_txt2year))
-            query_movie_name(clean_txt3mov, clean_txt2year,movie.group(0))
-            print("__________________________________________________________________")
+            logger.info('Quering the movie \'' + clean_txt3mov + '\' from year ' + clean_txt2year)
+            query_movie_name(clean_txt3mov, clean_txt2year, movie.group(0))
+            logger.info('__________________________________________________________________')
         else:
-            movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).mkv$',x)
+            movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).' + ftype + "$",x)
             if movie:
                 logging.debug("===>Matched Second")
                 logging.debug(('===>group 0 ---> ', movie.group(0)))
@@ -254,59 +266,16 @@ def get_MKV_files():
                 clean_txt2mov = re.sub('[_]',' ', clean_txt1mov)
                 clean_txt3mov = re.sub('\d\d\d\d','', clean_txt2mov)
                 logging.debug(('===>clean_txt3mov ---> ', clean_txt3mov))
+                logger.info('Quering the movie \'' + clean_txt3mov + '\'')
                 query_movie_name(clean_txt3mov, clean_txt2year,movie.group(0))
-                mkv_dict[clean_txt3mov] = movie.group(0); # Add new entry
-                print("__________________________________________________________________")
+                logger.info('__________________________________________________________________')
             else:
                 print "no match"
-                print("__________________________________________________________________")
+                logger.info('__________________________________________________________________')
 
-   
-def get_AVI_files():
-    global avi_dict
-    avi_dict = {} # create a dictionary to remove R-Rated files
-    avi_list = [] # create an iterable list
-    for root , dirs, files in os.walk(library):
-        for file in files:
-            if file.endswith(".avi"):
-                avi_list.append(os.path.join(root, file))
-    
-    for x in avi_list:
-        print('===>Working with  ---> ', x)
-        movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).*(2\d\d\d).*(1080p)?|(720p)?(\w*)avi$',x)
-        if movie:
-            logging.debug("===>Matched first")
-            logging.debug(('===>group 0 ---> ', movie.group(0)))
-            logging.debug(('===>group 1 ---> ', movie.group(1)))
-            logging.debug(('===>group 2 ---> ', movie.group(2)))
-            logging.debug(('===>group 3 ---> ', movie.group(3)))
-            clean_txt1year = movie.group(3)
-            clean_txt2year = re.sub('[ ]','', clean_txt1year)
-            clean_txt1mov = re.sub('[.]',' ', movie.group(2))
-            clean_txt2mov = re.sub('[_]',' ', clean_txt1mov)
-            clean_txt3mov = re.sub('\d\d\d\d','', clean_txt2mov)
-            logging.debug(('===>clean_txt3mov ---> ', clean_txt3mov))
-            logging.debug(('===>clean_txt2year ---> ', clean_txt2year))
-            query_movie_name(clean_txt3mov, clean_txt2year,movie.group(0))
-            print("__________________________________________________________________")
-        else:
-            movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).avi$',x)
-            if movie:
-                logging.debug("===>Matched Second")
-                logging.debug(('===>group 0 ---> ', movie.group(0)))
-                logging.debug(('===>group 1 ---> ', movie.group(1)))
-                logging.debug(('===>group 2 ---> ', movie.group(2)))
-                clean_txt2year = ''
-                clean_txt1mov = re.sub('[.]',' ', movie.group(2))
-                clean_txt2mov = re.sub('[_]',' ', clean_txt1mov)
-                clean_txt3mov = re.sub('\d\d\d\d','', clean_txt2mov)
-                logging.debug(('===>clean_txt3mov ---> ', clean_txt3mov))
-                query_movie_name(clean_txt3mov, clean_txt2year,movie.group(0))
-                avi_dict[clean_txt3mov] = movie.group(0); # Add new entry
-                print("__________________________________________________________________")
-            else:
-                print "no match"
-                print("__________________________________________________________________")
 
-# get_MKV_files()
-get_AVI_files()
+logger.info('----------------------Starting happyhome----------------------')
+file_types = ['mkv', 'avi']
+for ft in file_types:
+    logger.info('Checking for films with the extension :' + ft)
+    get_files(ft)
