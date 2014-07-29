@@ -283,3 +283,4 @@ file_types = ['mp4', 'mkv', 'avi']
 for ft in file_types:
     logger.info('Checking for films with the extension :' + ft)
     get_files(ft)
+logger.info('----------------------You have a happy home now----------------------')
