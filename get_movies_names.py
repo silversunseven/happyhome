@@ -27,13 +27,13 @@ def chk_for_R(mpaa, title, file_loc):
         logger.warn("Deleting " + title + " from " + file_loc)
         os.remove(file_loc)
     else:
-        logger.info('Passed moral code(R-rated+bad Language) check.')
+        logger.info('Passed moral code combination (R-rated+bad Language)')
     if "Rated PG-13" in mpaa and "language" in mpaa:
         logger.warn('Failed moral code check!. ' + title + " is PG-13 Rated BUT contains bad language! " + mpaa)
         logger.warn("Deleting " + title + " from " + file_loc)
         os.remove(file_loc)
     else:
-        logger.info('Passed moral code(Naughty PG-13+bad Language) check.')
+        logger.info('Passed moral code combination (Naughty PG-13+bad Language)')
     logger.info('MPAA : ' + mpaa)
     
 def set_movie_params(ti):
@@ -190,7 +190,7 @@ def query_movie_name(mov, file_year, file_loc):
                     logging.debug(('Type Needs===> ','movie'))
                     logging.debug(('Type Recvd===> ',ti['kind']))
                     logging.debug('============================')
-                    logging.debug('MATCH FOUND!')    
+                    logger.info('MATCH FOUND!')    
                     logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
                     logger.info('Setting parameters for Film - ' + str(ti['title']))
                     set_movie_params(ti)
@@ -202,6 +202,7 @@ def query_movie_name(mov, file_year, file_loc):
                         break
                 else:
                     logger.info('Film ' + str(ti.movieID) + ' not matched! Reason : '  + " (" + ti['kind'] + ") " + ' != (movie)')
+                    logger.info('Trying next film in result list.')
                     init = init + 1
             else:
                 if int(file_year) < 2000:
@@ -215,7 +216,7 @@ def query_movie_name(mov, file_year, file_loc):
                     logging.debug(('Year Needs===> ',str(file_year)))
                     logging.debug(('Year Recvd===> ',imdb_year))
                     logging.debug('============================')
-                    logging.debug('MATCH FOUND!')    
+                    logger.info('MATCH FOUND!')
                     logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
                     set_movie_params(ti)
                     chk_for_R(mpaa,ti['title'], file_loc )
@@ -234,7 +235,10 @@ def get_files(ftype):
         for file in files:
             if file.endswith("." + ftype):
                 list_of_files.append(os.path.join(root, file))
-    
+    logger.info('================================================================')
+    logger.info('Found ' + str(len(list_of_files)) + ' files that match file type ' + ft)
+    logger.info('================================================================')
+
     for x in list_of_files:
         logger.info('Working with file :' + x)
         movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).*(2\d\d\d).*(1080p)?|(720p)?(\w*)' + ftype + "$",x)
@@ -275,7 +279,7 @@ def get_files(ftype):
 
 
 logger.info('----------------------Starting happyhome----------------------')
-file_types = ['mkv', 'avi']
+file_types = ['mp4', 'mkv', 'avi']
 for ft in file_types:
     logger.info('Checking for films with the extension :' + ft)
     get_files(ft)
