@@ -217,7 +217,6 @@ def query_movie_name(mov, file_year, file_loc):
                     logging.debug(('Year Recvd===> ',imdb_year))
                     logging.debug('============================')
                     logger.info('MATCH FOUND!')
-                    logger.info('Setting parameters for Film - ' + str(ti['title']))
                     logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
                     logger.info('Setting parameters for Film - ' + str(ti['title']))
                     set_movie_params(ti)
