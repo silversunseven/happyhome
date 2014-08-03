@@ -23,17 +23,17 @@ library='/home/aiden/python/udacity_project/happyhome/Library'
 def chk_for_R(mpaa, title, file_loc):
     logger.info('Checking to see if the film (' + title + ') complies with moral code...')
     if "Rated R" in mpaa and "language" in mpaa:
-        logger.warn('Failed moral code check!. ' + title + " is an R-Rated Film, with bad language!" + str(mpaa))
+        logger.warn('1/2 Failed moral code check!. ' + title + " is an R-Rated Film, with bad language!" + str(mpaa))
         logger.warn("Deleting " + title + " from " + file_loc)
         os.remove(file_loc)
     else:
-        logger.info('Passed moral code combination (R-rated+bad Language)')
+        logger.info('1/2 Passed moral code combination (R-rated+bad Language)')
     if "Rated PG-13" in mpaa and "language" in mpaa:
-        logger.warn('Failed moral code check!. ' + title + " is PG-13 Rated BUT contains bad language! " + mpaa)
+        logger.warn('2/2 Failed moral code check!. ' + title + " is PG-13 Rated BUT contains bad language! " + mpaa)
         logger.warn("Deleting " + title + " from " + file_loc)
         os.remove(file_loc)
     else:
-        logger.info('Passed moral code combination (Naughty PG-13+bad Language)')
+        logger.info('2/2 Passed moral code combination (Naughty PG-13+bad Language)')
     logger.info('MPAA : ' + mpaa)
     
 def set_movie_params(ti):
@@ -217,13 +217,16 @@ def query_movie_name(mov, file_year, file_loc):
                     logging.debug(('Year Recvd===> ',imdb_year))
                     logging.debug('============================')
                     logger.info('MATCH FOUND!')
+                    logger.info('Setting parameters for Film - ' + str(ti['title']))
                     logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
+                    logger.info('Setting parameters for Film - ' + str(ti['title']))
                     set_movie_params(ti)
-                    chk_for_R(mpaa,ti['title'], file_loc )
-                    break
-                else:
-                    logger.info('Film ' + str(ti.movieID) + ' not matched! Reason : '  + ' (' + ti['kind'] + ')' + ' != (movie) || file ' + str(file_year) + ' != ' + str(imdb_year))
-                    init = init + 1
+                    if mpaa == 'None':
+                        logger.info("Can't Check against moral code beccause there is no MPAA rating for this film")
+                        break
+                    else:
+                        logger.info('Film ' + str(ti.movieID) + ' not matched! Reason : '  + ' (' + ti['kind'] + ')' + ' != (movie) || file ' + str(file_year) + ' != ' + str(imdb_year))
+                        init = init + 1
         else:
             logger.info('Skipping as this is a short Film! ' + str(ti.movieID) + ". Trying next Film..." )
             init = init + 1
@@ -241,6 +244,12 @@ def get_files(ftype):
 
     for x in list_of_files:
         logger.info('Working with file :' + x)
+        sample=re.match('.*(?i)sample.*',x)
+        if sample:
+            logger.warn("This is a sample file. Deleting file " + x)
+            os.remove(x)
+            logger.info('__________________________________________________________________')
+            continue
         movie=re.match('(.*\/)([a-z,A-Z, ,.\-,\w]*).*(2\d\d\d).*(1080p)?|(720p)?(\w*)' + ftype + "$",x)
         if movie:
             logging.debug("===>Matched first")
