@@ -47,11 +47,11 @@ touch ./Jamesy\ Boy\ \(2014\)/WWW.YIFY-TORRENTS.COM.jpg
 mkdir -p ./Khumba.2013.BDRiP.AC3-5.1.XviD-AXED
 touch ./Khumba.2013.BDRiP.AC3-5.1.XviD-AXED/Khumba.2013.BDRiP.AC3-5.1.XviD-AXED.avi
 touch ./Khumba.2013.BDRiP.AC3-5.1.XviD-AXED/Khumba.2013.BDRiP.AC3-5.1.XviD-AXED.nfo
-mkdir -p ./Mr\ Peabody\ and\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/subs
-touch ./Mr\ Peabody\ and\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/Mr\ Peabody\ and\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.mp4
-touch ./Mr\ Peabody\ and\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/Mr\ Peabody\ and\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.mp4.jpg
-touch ./Mr\ Peabody\ and\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/subs/\(eng\)Mr\ Peabody\ and\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.srt
-touch ./Mr\ Peabody\ and\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/subs/Mr\ Peabody\ and\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.smi
+mkdir -p ./Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/subs
+touch ./Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.mp4
+touch ./Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.mp4.jpg
+touch ./Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/subs/\(eng\)Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.srt
+touch ./Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/subs/Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.smi
 mkdir -p ./Need\ for\ Speed\ \(2014\)\ [1080p]
 touch ./Need\ for\ Speed\ \(2014\)\ [1080p]/Need.for.Speed.2014.1080p.BluRay.x264.YIFY.mp4
 touch ./Need\ for\ Speed\ \(2014\)\ [1080p]/WWW.YTS.RE.jpg
@@ -88,7 +88,7 @@ mkdir -p ./Soul\ Surfer\ \(2011\)\ [1080p]
 touch ./Soul\ Surfer\ \(2011\)\ [1080p]/Soul.Surfer.2011.1080p.BluRay.x264.YIFY.mp4
 touch ./Soul\ Surfer\ \(2011\)\ [1080p]/WWW.YIFY-TORRENTS.COM.jpg
 mkdir -p ./The\ Adventurer\ The\ Curse\ of\ the\ Midas\ Box\ [2013]\ 1080p\ BluRay\ AAC\ x264-tomcat12[ETRG]
-touch ./The\ Adventurer\ The\ Curse\ of\ the\ Midas\ Box\ [2013]\ 1080p\ BluRay\ AAC\ x264-tomcat12[ETRG]/The\ Curse\ of\ the\ Midas\ Box\ [2013]\ 1080p\ BluRay\ AAC\ x264-tomcat12[ETRG].mp4
+touch ./The\ Adventurer\ The\ Curse\ of\ the\ Midas\ Box\ [2013]\ 1080p\ BluRay\ AAC\ x264-tomcat12[ETRG]/The\ Adventurer\ The\ Curse\ of\ the\ Midas\ Box\ [2013]\ 1080p\ BluRay\ AAC\ x264-tomcat12[ETRG].mp4
 touch ./The\ Adventurer\ The\ Curse\ of\ the\ Midas\ Box\ [2013]\ 1080p\ BluRay\ AAC\ x264-tomcat12[ETRG]/The\ Curse\ of\ the\ Midas\ Box\ [2013]\ 1080p\ sample.mp4
 touch ./The\ Adventurer\ The\ Curse\ of\ the\ Midas\ Box\ [2013]\ 1080p\ BluRay\ AAC\ x264-tomcat12[ETRG]/Torrent\ Downloaded\ From\ ExtraTorrent.cc.txt
 mkdir -p ./The\ Legend\ of\ Hercules\ \(2014\)
@@ -192,7 +192,7 @@ touch ./Man.of.Tai.Chi.2013.720p.Webrip.x264.AC3-FooKaS.mkv
 touch ./Black\ Nativity\ 2013\ DVDRip\ XviD-FAVIK.avi
 touch ./ExtraTorrentRG.mp4
 touch ./Epic.2013.720p.BluRay.x264.YIFY.mp4
-touch ./Bourne\ the\ 2\ 2004\ Supremacy.mp4
+touch ./Bourne\ Supremacy\ 2004\.mp4 
 touch ./Behind.the.sun.avi
 touch ./Haunter.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Jerusalem.Countdown.avi
@@ -203,7 +203,7 @@ touch ./Pitch.Perfect.2012.720p.BRrip.264.YIFY.mp4
 touch ./Journey\ to\ Faith.divx
 touch ./Brigham\ City.mov
 touch ./The\ Secret\ Life\ of\ Walter\ Mitty\ 2013\ DVDscr\ XViD\ NO1KNOWS.avi
-touch ./Bourne\ the\ 3\ 2007\ Ultimatum.mp4
+touch ./Bourne\ Ultimatum\ 2007\.mp4 
 touch ./Dark.Skies.2013.720p.Read.Info.X264.AC3.TommieCook.avi
 touch ./Journey\ 2\ The\ Mysterious\ Island\ 2012\ TS\ READNFO\ XViD\ -\ INSPiRAL.avi
 touch ./Dialtone\ [2009][DVDRip].avi
@@ -232,7 +232,7 @@ touch ./The\ Host\ 2013\ 720p\ HDRip\ x264\ AC3-JYK.mkv
 touch ./Color\ of\ the\ Cross.English_French.sub.DVDriP.avi
 touch ./Hours.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Anonymous\ 2011\ 720p\ BRRip\ x264\ -MgB.mp4
-touch ./Bourne\ the\ 1\ 2002\ Identity.mp4
+touch ./Bourne\ Identity\ 2002.mp4
 touch ./God\ of\ Wonders.avi
 touch ./The\ Legend\ of\ Three\ Trees.avi
 touch ./One\ Day[2011]BRRip\ XviD-ExtraTorrentRG.avi
