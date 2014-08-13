@@ -149,7 +149,6 @@ def query_movie_name(file_title, file_year, file_loc):
             logger.info('Skipping as this is a short Film! ' + str(ti.movieID) + ". Trying next film in result list. init = " + str(init))
             init_check(init)
 
-        
         # Main Logic
         if file_year == '' and ti['kind'] == 'movie':
             logging.debug('============================')
@@ -192,10 +191,6 @@ def query_movie_name(file_title, file_year, file_loc):
                 break
         else:
             logger.info('Film ' + str(ti.movieID) + ' not matched! Reason : '  + " (" + ti['kind'] + ") " + ' != (movie) OR ' + str(pre_imdb_year) + " != " + str(file_year) + ". Trying next film in result list. init = " + str(init))
-    
-
-
-
 
 def get_files(ftype):
     list_of_files = [] # create a blank list that will become iterable
