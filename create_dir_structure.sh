@@ -47,11 +47,6 @@ touch ./Jamesy\ Boy\ \(2014\)/WWW.YIFY-TORRENTS.COM.jpg
 mkdir -p ./Khumba.2013.BDRiP.AC3-5.1.XviD-AXED
 touch ./Khumba.2013.BDRiP.AC3-5.1.XviD-AXED/Khumba.2013.BDRiP.AC3-5.1.XviD-AXED.avi
 touch ./Khumba.2013.BDRiP.AC3-5.1.XviD-AXED/Khumba.2013.BDRiP.AC3-5.1.XviD-AXED.nfo
-mkdir -p ./Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/subs
-touch ./Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.mp4
-touch ./Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.mp4.jpg
-touch ./Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/subs/\(eng\)Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.srt
-touch ./Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK/subs/Mr\ Peabody\ \&\ Sherman\ 2014\ 720p\ WEB-DL\ x264\ AAC-JYK.smi
 mkdir -p ./Need\ for\ Speed\ \(2014\)\ [1080p]
 touch ./Need\ for\ Speed\ \(2014\)\ [1080p]/Need.for.Speed.2014.1080p.BluRay.x264.YIFY.mp4
 touch ./Need\ for\ Speed\ \(2014\)\ [1080p]/WWW.YTS.RE.jpg
@@ -110,7 +105,6 @@ mkdir -p ./Tracks\ \(2013\)
 touch ./Tracks\ \(2013\)/Tracks.2013.720p.BluRay.x264.YIFY.mp4
 touch ./Tracks\ \(2013\)/WWW.YIFY-TORRENTS.COM.jpg
 mkdir -p ./Video.Games.The.Movie.2014.HDRip.XViD-juggs[ETRG]
-touch ./Video.Games.The.Movie.2014.HDRip.XViD-juggs[ETRG]/ETRG.mp4
 touch ./Video.Games.The.Movie.2014.HDRip.XViD-juggs[ETRG]/sample.avi
 touch ./Video.Games.The.Movie.2014.HDRip.XViD-juggs[ETRG]/Torrent\ Downloaded\ From\ ExtraTorrent.cc.txt
 touch ./Video.Games.The.Movie.2014.HDRip.XViD-juggs[ETRG]/Video\ Games\ The\ Movie-ETRG.nfo
