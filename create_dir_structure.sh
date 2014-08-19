@@ -116,7 +116,6 @@ touch ./Walking.With.Dinosaurs.2013.720p.BRRiP.XViD.AC3-LEGi0N/Walking.With.Dino
 touch ./Walking.With.Dinosaurs.2013.720p.BRRiP.XViD.AC3-LEGi0N/Walking.With.Dinosaurs.2013.720p.BRRiP.XViD.AC3-LEGi0N.nfo
 touch ./Walking.With.Dinosaurs.2013.720p.BRRiP.XViD.AC3-LEGi0N/Walking.With.Dinosaurs.2013.720p.BRRiP.XViD.AC3-LEGi0N.sample.avi
 mkdir -p ./Wings.Sky\ Force.Heroes.2014.HDRip.XViD.juggs[ETRG]
-touch ./Wings.Sky\ Force.Heroes.2014.HDRip.XViD.juggs[ETRG]/ETRG.mp4
 touch ./Wings.Sky\ Force.Heroes.2014.HDRip.XViD.juggs[ETRG]/sample.avi
 touch ./Wings.Sky\ Force.Heroes.2014.HDRip.XViD.juggs[ETRG]/Torrent\ Downloaded\ From\ ExtraTorrent.cc.txt
 touch ./Wings.Sky\ Force.Heroes.2014.HDRip.XViD.juggs[ETRG]/Wings\ Sky\ Force\ Heroes-ETRG.nfo
