@@ -46,10 +46,6 @@ def get_poster_from_tmdb(file_title, file_year):
             movPosterURL=tmdb3.Movie(tmdbID).poster.geturl()
             return movPosterURL
 
-# there are 2 possible failures here in the indexing not sure how to combine the two try's. After this is fixed, run the code across the Library and if all works
-# start to pull out the trailer and poster out of the dictionary and incorp into the html.
-# eventually add html tags to display the posters and make the trailers clickable from the poster image.
-
 def get_trailer_from_tmdb(file_title, file_year):
     result=tmdb3.searchMovie(file_title, year=file_year)
     print('Trailers Found : ' +str(len(result)))
