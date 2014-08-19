@@ -1,12 +1,17 @@
 #!/usr/bin/python
+# Uses local IMDB to query most of the movie parameters
+# Uses TMDB to query the Poster links and Movie Trailers
 
-import os, fnmatch, re, glob, shutil, logging, sqlobject
+import os, fnmatch, re, glob, shutil, logging, sqlobject, HTML, tmdb3
 from imdb import IMDb
 from imdb import helpers
-import happy_home
-import media
 
+def del_file(filename):
+    os.remove(filename)
+    
 #setting for writing to logs
+if os.path.exists('/home/aiden/python/udacity_project/happyhome/happyhome.log'):
+    del_file('/home/aiden/python/udacity_project/happyhome/happyhome.log')
 logger = logging.getLogger('happyhome')
 hdlr = logging.FileHandler('/home/aiden/python/udacity_project/happyhome/happyhome.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
@@ -22,101 +27,155 @@ library='/home/aiden/python/udacity_project/happyhome/Library'
 #===============================================================
 # Code:
 
-def chk_for_R(mpaa, title, file_loc):
+def get_poster_from_tmdb(file_title, file_year):
+    result=tmdb3.searchMovie(file_title, year=file_year)
+    print('Posters Found : ' +str(len(result)))
+    try:
+        tmdbID=result[0].id
+    except IndexError:
+        movPosterURL='None'
+        return movPosterURL
+    else:
+        tmdbID=result[0].id
+        try:
+            movPosterURL=tmdb3.Movie(tmdbID).poster.geturl()
+        except AttributeError:
+            movPosterURL='None'
+            return movPosterURL
+        else:
+            movPosterURL=tmdb3.Movie(tmdbID).poster.geturl()
+            return movPosterURL
+
+# there are 2 possible failures here in the indexing not sure how to combine the two try's. After this is fixed, run the code across the Library and if all works
+# start to pull out the trailer and poster out of the dictionary and incorp into the html.
+# eventually add html tags to display the posters and make the trailers clickable from the poster image.
+
+def get_trailer_from_tmdb(file_title, file_year):
+    result=tmdb3.searchMovie(file_title, year=file_year)
+    print('Trailers Found : ' +str(len(result)))
+    try:
+        tmdbID=result[0].id
+    except IndexError:
+        movTrailerURL='None'
+        return movTrailerURL
+    else:
+        tmdbID=result[0].id
+        movie=tmdb3.Movie(tmdbID)
+        try:
+            movTrailerURL=movie.youtube_trailers[0].geturl()
+        except IndexError:
+            movTrailerURL='None'
+            return movTrailerURL
+        except UnicodeEncodeError:
+            movTrailerURL='None'
+        else:
+            movTrailerURL=movie.youtube_trailers[0].geturl()
+            return movTrailerURL
+
+def chk_for_R(mpaa, title, file_loc, table_data_rating, dict_param):
     logger.info('Checking to see if the film (' + title + ') complies with moral code...')
-    if "Rated R" in mpaa and "language" in mpaa:
+    if "Rated R" in mpaa and "language" in mpaa or "Rated PG-13" in mpaa and "language" in mpaa:
         logger.warn('1/2 Failed moral code check!. ' + title + " is an R-Rated Film, with bad language!" + str(mpaa))
         logger.warn("Deleting " + title + " from " + file_loc)
         os.remove(file_loc)
     else:
         logger.info('1/2 Passed moral code combination (R-rated+bad Language) -> ' + mpaa)
-    if "Rated PG-13" in mpaa and "language" in mpaa:
-        logger.warn('2/2 Failed moral code check!. ' + title + " is PG-13 Rated BUT contains bad language! " + mpaa)
-        logger.warn("Deleting " + title + " from " + file_loc)
-        os.remove(file_loc)
-    else:
         logger.info('2/2 Passed moral code combination (Naughty PG-13+bad Language) -> ' + mpaa)
-        
-def set_movie_params(ti,dict_param):
+        table_data_rating.append([dict_param['rating'],dict_param['title'],dict_param['year'],dict_param['mpaa'],dict_param['genres'],dict_param['plot'],dict_param['runtime'],dict_param['poster'],dict_param['trailer']])
+            
+def set_movie_params(ti,dict_param,movTrailerURL,movPosterURL):
     try:  #get TITLE
         ti['title']
     except KeyError:
         dict_param['title'] = 'None'
     else:
-        dict_param['title'] = ti['title']
+        dict_param['title'] = re.sub('[^\040-\176]', '', ti['title'])
 
     try:  #get YEAR
         ti['year']
     except KeyError:
         dict_param['year'] = 'None'
     else:
-        dict_param['year'] = ti['year']
+        dict_param['year'] = str(ti['year'])
 
     try:  #get MPAA
         ti['mpaa']
     except KeyError:
         dict_param['mpaa'] = 'None'
     else:
-        dict_param['mpaa'] = ti['mpaa']
+        dict_param['mpaa'] = str(ti['mpaa'])
 
     try:  #get RATING
         ti['rating']
     except KeyError:
         dict_param['rating'] = 'None'
     else:
-        dict_param['rating'] = ti['rating']
+        dict_param['rating'] = str(ti['rating'])
 
     try:  #get KIND
         ti['kind']
     except KeyError:
         dict_param['kind'] = 'None'
     else:
-        dict_param['kind'] = ti['kind']
+        dict_param['kind'] = str(ti['kind'])
 
     try:  #get DIRECTOR
         ti['director'][0]
     except KeyError:
         dict_param['director'] = 'None'
     else:
-        dict_param['director'] = ti['director']
+        dict_param['director'] = str(ti['director'])
 
     try:  #get GENRES
         ti['genres']
     except KeyError:
         dict_param['genres'] = 'None'
     else:
-        dict_param['genres'] = ti['genres']
+        dict_param['genres'] = str(ti['genres'])
 
     try:  #get RUNTIME
         ti['runtimes']
     except KeyError:
         dict_param['runtime'] = 'None'
     else:
-        dict_param['runtime'] = ti['runtimes'][0]
+        dict_param['runtime'] = str(ti['runtimes'][0])
 
     try:  #get LANGUAGE
         ti['languages'][0]
     except KeyError:
-        dict_param['language'] = 'None'
+        dict_param['languages'] = 'None'
     else:
-        dict_param['runtime'] = ti['languages'][0]
-        
+        dict_param['languages'] = str(ti['languages'][0])
+     
     try:  #get PLOT
         ti['plot'][0]
     except KeyError:
         dict_param['plot'] = 'None'
     else:
-        dict_param['plot'] = ti['plot'][0]    
+        #Plot sometims has funny char's so we need to remove them because the html module doesn't like the special utf-8 chars
+        dict_param['plot'] = re.sub('[^\040-\176]', '', ti['plot'][0])
 
-    return dict_param
+#<a href="http://image.tmdb.org/t/p/original/4mgxG7ue6rQ42ONz5sc993Lj2PM.jpg"><img src="http://image.tmdb.org/t/p/original/4mgxG7ue6rQ42ONz5sc993Lj2PM.jpg" alt="poster" width="100" height="150"></a>
+
+    dict_param['poster'] ='<a href="' + str(movPosterURL) + '"><img src="' + str(movPosterURL) + '" alt="poster" width="100" height="150"></a>'
+    dict_param['trailer'] ='<a href="' + str(movTrailerURL) + '"><img src="http://imaginenews.com/wp-content/uploads/2012/04/ICON.jpg" alt="trailer" width="40" height="40"></a>' 
     
+    logger.info('Dictionary : ' + str(dict_param))
+    return dict_param
+
 def init_check(init):
     if init == 19:
         logger.info('Exhausted possible film matches...')
     else:
         logger.info('Trying next film in result list. init = ' + str(init))
-        
-def query_movie_name(file_title, file_year, file_loc):
+
+def write_rating_html(table_data_rating):
+    htmlout = open('happy_home_rating.html', 'a')
+    htmlcode = HTML.table(sorted(table_data_rating, reverse=True), header_row=['Rating','Title','Year','MPAA','Genres','Plot','Runtime','Poster','Trailer'])
+    htmlout.write(htmlcode)
+    htmlout.close()
+
+def query_movie_name(file_title, file_year, file_loc, table_data_rating,movTrailerURL,movPosterURL):
     dict_param = {}
     global i
     i = IMDb('sql', uri='mysql://root:f4tb33@localhost/imdb')
@@ -136,18 +195,19 @@ def query_movie_name(file_title, file_year, file_loc):
         try:                
             pre_genreList = ti['genres']
         except KeyError:
-            logger.info(('No Genre Found for Film - ' + str(ti.movieID)))
+            logger.info('No Genre Found for Film ')
             pre_genreList = ['None']
         try:                
             pre_imdb_year = ti['year']
         except KeyError:
-            logger.info(('No Year Found for Film - ' + str(ti.movieID)))
+            logger.info('No Year Found for Film ')
             pre_imdb_year = ['']
             
         # If any of these match, then the file can't be processed
         if 'Short' in pre_genreList:
             logger.info('Skipping as this is a short Film! ' + str(ti.movieID) + ". Trying next film in result list. init = " + str(init))
             init_check(init)
+            
 
         # Main Logic
         if file_year == '' and ti['kind'] == 'movie':
@@ -158,14 +218,13 @@ def query_movie_name(file_title, file_year, file_loc):
             logging.debug('============================')
             logger.info('MATCH FOUND!')
             logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
-            logger.info('Setting parameters for Film - ' + str(ti['title']))
-            set_movie_params(ti,dict_param)
-            print(dict_param.items())
+            logger.info('Setting parameters for Film - ' + re.sub('[^\040-\176]', '', ti['title']))
+            set_movie_params(ti,dict_param,movTrailerURL,movPosterURL)
             if dict_param['mpaa'] == 'None':
                 logger.info("Can't Check against moral code because there is no MPAA rating for this film")
                 break
             else:
-                chk_for_R(dict_param['mpaa'],dict_param['title'], file_loc )
+                chk_for_R(dict_param['mpaa'],dict_param['title'], file_loc, table_data_rating, dict_param)
                 break
         elif file_year != '' and ti['kind'] == 'movie' and str(pre_imdb_year) == str(file_year):
             if int(file_year) < 2000:
@@ -180,19 +239,22 @@ def query_movie_name(file_title, file_year, file_loc):
             logging.debug('============================')
             logger.info('MATCH FOUND!')
             logging.debug(('===> MATCH FOUND!. ID ', ti.movieID))
-            logger.info('Setting parameters for Film - ' + str(ti['title']))
-            set_movie_params(ti,dict_param)
-            print(dict_param.items())
+            logger.info('Setting parameters for Film - ' + re.sub('[^\040-\176]', '', ti['title']))
+            #logger.info('Setting parameters for Film - ' + str(ti['title']))
+            set_movie_params(ti,dict_param,movTrailerURL,movPosterURL)
             if dict_param['mpaa'] == 'None':
                 logger.info("Can't Check against moral code because there is no MPAA rating for this film")
+                table_data_rating.append(
+                [dict_param['rating'],dict_param['title'],dict_param['year'],dict_param['mpaa'],dict_param['genres'],dict_param['plot'],dict_param['runtime']],)
                 break
             else:
-                chk_for_R(dict_param['mpaa'],dict_param['title'], file_loc )
+                chk_for_R(dict_param['mpaa'],dict_param['title'], file_loc,table_data_rating,dict_param)
                 break
         else:
             logger.info('Film ' + str(ti.movieID) + ' not matched! Reason : '  + " (" + ti['kind'] + ") " + ' != (movie) OR ' + str(pre_imdb_year) + " != " + str(file_year) + ". Trying next film in result list. init = " + str(init))
 
-def get_files(ftype):
+def get_files(ftype,table_data_rating):
+    # Create or overwrite the output file
     list_of_files = [] # create a blank list that will become iterable
     for root , dirs, files in os.walk(library):
         for file in files:
@@ -227,8 +289,10 @@ def get_files(ftype):
             logging.debug(('===>clean_txt3mov ---> ', clean_txt3mov))
             logging.debug(('===>clean_txt2year ---> ', clean_txt2year))
             logger.info('Quering the movie \'' + clean_txt3mov + '\' from year ' + clean_txt2year)
+            movPosterURL=get_poster_from_tmdb(clean_txt3mov, clean_txt2year)
+            movTrailerURL=get_trailer_from_tmdb(clean_txt3mov, clean_txt2year)
             #Submit Film name and year to be queries from the local IMDB
-            query_movie_name(clean_txt3mov, clean_txt2year, movie.group(0))
+            query_movie_name(clean_txt3mov, clean_txt2year, movie.group(0),table_data_rating,movTrailerURL,movPosterURL)
             logger.info('____________________finished______________________________________________')
         else:
             # Extract just the Film name from the given filename using the second REGEX
@@ -244,20 +308,32 @@ def get_files(ftype):
                 clean_txt3mov = re.sub('\d\d\d\d','', clean_txt2mov)
                 logging.debug(('===>clean_txt3mov ---> ', clean_txt3mov))
                 logger.info('Quering the movie \'' + clean_txt3mov + '\'')
+                movPosterURL=get_poster_from_tmdb(clean_txt3mov, clean_txt2year)
+                movTrailerURL=get_trailer_from_tmdb(clean_txt3mov, clean_txt2year)
                 #Submit Film name and year to be queries from the local IMDB
-                query_movie_name(clean_txt3mov, clean_txt2year,movie.group(0))
+                query_movie_name(clean_txt3mov, clean_txt2year,movie.group(0),table_data_rating,movTrailerURL,movPosterURL)
                 logger.info('__________________________________________________________________')
             else:
                 logger.info('Cannot match the file name to any regular expression! Filename : ' + str(filename))
                 logger.info('__________________________________________________________________')
-
-
+    
 def main ():
+    if os.path.exists('/home/aiden/python/udacity_project/happyhome/happy_home_mpaa.html'):
+        del_file('/home/aiden/python/udacity_project/happyhome/happy_home_mpaa.html')
+    if os.path.exists('/home/aiden/python/udacity_project/happyhome/happy_home_rating.html'):
+        del_file('/home/aiden/python/udacity_project/happyhome/happy_home_rating.html')
+    table_data_rating = []
     logger.info('----------------------Starting happyhome----------------------')
+    logger.info('Initializing TMDB connection...')
+    tmdb3.set_key('9211973b8f075528e041a5d0cc19fb40')
+    tmdb3.set_cache(engine='file', filename='/tmp/tmdb_cache') # Cached data is keyed off the request URL, and is currently stored for one hour
+    tmdb3.set_locale('en', 'gb')
+
     file_types = ['mp4', 'mkv', 'avi']
     for ft in file_types:
         logger.info('Checking for films with the extension :' + ft)
-        get_files(ft)
+        get_files(ft,table_data_rating)
+    write_rating_html(table_data_rating)
     logger.info('----------------------You have a happy home now----------------------')
 
 main()
