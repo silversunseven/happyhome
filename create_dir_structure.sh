@@ -69,13 +69,6 @@ mkdir -p ./Saving\ Mr\ Banks\ 2013\ DVDSCR[AC3]\ juggs
 touch ./Saving\ Mr\ Banks\ 2013\ DVDSCR[AC3]\ juggs/sample.avi
 touch ./Saving\ Mr\ Banks\ 2013\ DVDSCR[AC3]\ juggs/Saving\ Mr\ Banks\ 2013\ DVDSCR[AC3]\ juggs.avi
 touch ./Saving\ Mr\ Banks\ 2013\ DVDSCR[AC3]\ juggs/Torrent\ Downloaded\ From\ ExtraTorrent.cc.txt
-mkdir -p ./Son\ of\ Batman\ [2014]\ BRRip\ XviD-SaM[ETRG]/
-touch ./Son\ of\ Batman\ [2014]\ BRRip\ XviD-SaM[ETRG]/SaMple.avi
-touch ./Son\ of\ Batman\ [2014]\ BRRip\ XviD-SaM[ETRG]/Son\ of\ Batman\ [2014]\ BRRip\ XviD-SaM[ETRG].avi
-touch ./Son\ of\ Batman\ [2014]\ BRRip\ XviD-SaM[ETRG]/Son\ of\ Batman\ [2014]\ BRRip\ XviD-SaM[ETRG].srt
-touch ./Son\ of\ Batman\ [2014]\ BRRip\ XviD-SaM[ETRG]/Son\ of\ Batman\ [2014]\ BRRip\ XviD-SaM[ETRG]HI.srt
-touch ./Son\ of\ Batman\ [2014]\ BRRip\ XviD-SaM[ETRG]/SONOFBATMAN-ETRG.nfo
-touch ./Son\ of\ Batman\ [2014]\ BRRip\ XviD-SaM[ETRG]/Torrent\ Downloaded\ From\ ExtraTorrent.cc.txt
 mkdir -p ./Son\ of\ God\ \(2014\)
 touch ./Son\ of\ God\ \(2014\)/Son.of.God.2014.720p.BluRay.x264.YIFY.mp4
 touch ./Son\ of\ God\ \(2014\)/WWW.YIFY-TORRENTS.COM.jpg
