@@ -6,21 +6,22 @@ import os, fnmatch, re, glob, shutil, logging, sqlobject, HTML, tmdb3, subproces
 from imdb import IMDb
 from imdb import helpers
 
-p  = subprocess.Popen(["/bin/uname", "-s"],stdout=subprocess.PIPE, shell=True)
-(output, err) = p.communicate()
-if output == 'Linux':
-    print('This is Linux')
-elif output == 'Darwin':
-    print('this is mac')
-else:
-    print('eeek! no clue...Output is : ' + str(output))
 
-
-
-Path='/Users/aiden/project/happyhome'
 def del_file(filename):
     os.remove(filename)
-    
+
+p  = subprocess.Popen(["uname", "-s"], stdout=subprocess.PIPE, shell=True)
+(output, err) = p.communicate()
+if 'Linux' in output:
+    Path = '/home/aiden/python/udacity_project/happyhome/'
+    print('this is Linux. Path set to ' + str(Path))
+elif 'Darwin' in output:
+    Path = '/Users/aiden/project/happyhome'
+    print('this is mac. Path set to ' + str(Path))
+else:
+    print('eeek! no clue...Output is : ' + str(output) + 'Try run uname -s on your system and validate the output! Exiting...')
+    exit(1)
+
 #setting for writing to logs
 if os.path.exists(Path + '/happyhome.log'):
     del_file(Path + '/happyhome.log')
@@ -35,6 +36,7 @@ logging.basicConfig(level=logging.INFO)
 
 library=Path + '/Library'
 #library=Path + '/Testlib'
+
 
 #================================================================================
 # Code:
@@ -344,10 +346,8 @@ def get_files(ftype,table_data_rating,dict_param):
                 logger.info('__________________________________________________________________')
 
 def main ():
-    if os.path.exists('/home/aiden/python/udacity_project/happyhome/happy_home_mpaa.html'):
-        del_file('/home/aiden/python/udacity_project/happyhome/happy_home_mpaa.html')
-    if os.path.exists('/home/aiden/python/udacity_project/happyhome/happy_home_rating.html'):
-        del_file('/home/aiden/python/udacity_project/happyhome/happy_home_rating.html')
+    if os.path.exists(Path + '/happy_home_rating.html'):
+        del_file(Path + '/happy_home_rating.html')
     table_data_rating = []
     dict_param = {}
     logger.info('----------------------Starting happyhome----------------------')
