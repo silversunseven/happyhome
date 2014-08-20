@@ -2,9 +2,20 @@
 # Uses local IMDB to query most of the movie parameters
 # Uses TMDB to query the Poster links and Movie Trailers
 
-import os, fnmatch, re, glob, shutil, logging, sqlobject, HTML, tmdb3
+import os, fnmatch, re, glob, shutil, logging, sqlobject, HTML, tmdb3, subprocess
 from imdb import IMDb
 from imdb import helpers
+
+p  = subprocess.Popen(["/bin/uname", "-s"],stdout=subprocess.PIPE, shell=True)
+(output, err) = p.communicate()
+if output == 'Linux':
+    print('This is Linux')
+elif output == 'Darwin':
+    print('this is mac')
+else:
+    print('eeek! no clue...Output is : ' + str(output))
+
+
 
 Path='/Users/aiden/project/happyhome'
 def del_file(filename):
