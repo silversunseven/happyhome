@@ -6,14 +6,15 @@ import os, fnmatch, re, glob, shutil, logging, sqlobject, HTML, tmdb3
 from imdb import IMDb
 from imdb import helpers
 
+Path='/Users/aiden/project/happyhome'
 def del_file(filename):
     os.remove(filename)
     
 #setting for writing to logs
-if os.path.exists('/home/aiden/python/udacity_project/happyhome/happyhome.log'):
-    del_file('/home/aiden/python/udacity_project/happyhome/happyhome.log')
+if os.path.exists(Path + '/happyhome.log'):
+    del_file(Path + '/happyhome.log')
 logger = logging.getLogger('happyhome')
-hdlr = logging.FileHandler('/home/aiden/python/udacity_project/happyhome/happyhome.log')
+hdlr = logging.FileHandler(Path + '/happyhome.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
@@ -21,8 +22,8 @@ logger.setLevel(logging.INFO)
 #set your log level for the console
 logging.basicConfig(level=logging.INFO)
 
-library='/home/aiden/python/udacity_project/happyhome/Library'
-#library='/home/aiden/python/udacity_project/happyhome/Testlib'
+library=Path + '/Library'
+#library=Path + '/Testlib'
 
 #================================================================================
 # Code:
