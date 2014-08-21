@@ -16,7 +16,7 @@ import HTML
 def del_file(filename):
     os.remove(filename)
 
-
+subprocess()
 p = subprocess.Popen(["uname", "-s"], stdout=subprocess.PIPE, shell=True)
 (output, err) = p.communicate()
 if 'Linux' in output:
