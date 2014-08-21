@@ -6,6 +6,7 @@ then
     exit 1
 fi
 
+
 sudo easy_install pip
 sudo easy_install -U setuptools
 sudo easy_install -U mysqladmin
