@@ -16,14 +16,14 @@ import HTML
 def del_file(filename):
     os.remove(filename)
 
-subprocess()
+#subprocess()
 p = subprocess.Popen(["uname", "-s"], stdout=subprocess.PIPE, shell=True)
 (output, err) = p.communicate()
 if 'Linux' in output:
-    Path = '/home/aiden/python/udacity_project/happyhome/'
+    Path = '/Users/aidenryan/project/happyhome'
     print('this is Linux. Path set to ' + str(Path))
 elif 'Darwin' in output:
-    Path = '/Users/aiden/project/happyhome'
+    Path = '/Users/aidenryan/project/happyhome'
     print('this is mac. Path set to ' + str(Path))
 else:
     print('eeek! no clue...Output is : ' + str(
@@ -42,7 +42,7 @@ logger.setLevel(logging.INFO)
 # set your log level for the console
 logging.basicConfig(level=logging.INFO)
 
-library = Path + '/Library'
+library = '/Volumes/LaCie/Downloads/Completed'
 # library=Path + '/Testlib'
 
 
